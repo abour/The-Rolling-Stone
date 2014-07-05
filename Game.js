@@ -60,8 +60,6 @@ function applyAcceleration() {
     var vel = 0;
 
     lineList.forEach(function(l) {
-        // var lineNextStep1 = acceleratorModule.computeNextStep(l.getLine().getPoint1().getX(), l.vx, -9.8 * 80, 10 / 1000.);
-        // var lineNextStep2 = acceleratorModule.computeNextStep(l.getLine().getPoint2().getX(), l.vx, -9.8 * 80, 10 / 1000.);
         var lineNextStep1 = acceleratorModule.computeNextStep(l.getLine().getPoint1().getX(), l.vx, -9.8 / 40000 , 1000. / GameConfig.FPS);
         var lineNextStep2 = acceleratorModule.computeNextStep(l.getLine().getPoint2().getX(), l.vx, -9.8 / 40000 , 1000. / GameConfig.FPS);
         l.getLine().getPoint1().setX(lineNextStep1.newPos);
