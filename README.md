@@ -3,6 +3,8 @@ The-Rolling-Stone
 
 Small retro-style video game for Edge Fest event using the edge-laser-simulator (https://github.com/morgan-linux/edge-laser-simulator).
 
+![alt text](http://i.imgur.com/nkNVXI6.png "Screenshot1")
+
 ## Description
 
 The stone is rolling faster and faster. If it hits the ground, you die !
