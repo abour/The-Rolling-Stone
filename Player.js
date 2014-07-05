@@ -45,7 +45,7 @@ exports.Player.prototype.getSphere = function() {
 exports.Player.prototype.jumpKeyPressed = function() {
     // Only 2 jumps are accepted (before touching a line again)
     if (this.numberOfJumpDone < 2) {
-        this.vy = -50000;
+        this.vy = -50;
     }
     this.numberOfJumpDone++;
 }

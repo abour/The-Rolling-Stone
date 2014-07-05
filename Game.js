@@ -8,6 +8,7 @@ var lineGenerator = require('./LineGenerator.js');
 var Intersection = require('./geometry/Intersection.js');
 var Floor = require('./Floor.js');
 var FloorDisplayer = require('./FloorDisplayer.js');
+var GameConfig = require('./GameConfig.js');
 
 var player = new playerModule.Player(10000, 40000, 3000, 0, 0);
 var lineList = new Array();
@@ -51,7 +52,7 @@ function display() {
 }
 
 function applyAcceleration() {
-    var playerNextStep = acceleratorModule.computeNextStep(player.getY(), player.vy, 9.8 * 14000, 10 / 1000.);
+    var playerNextStep = acceleratorModule.computeNextStep(player.getY(), player.vy, 9.8 * 0.01, 1000. / GameConfig.FPS);
 
     player.setY(playerNextStep.newPos);
     player.vy = playerNextStep.newVel;
@@ -59,8 +60,10 @@ function applyAcceleration() {
     var vel = 0;
 
     lineList.forEach(function(l) {
-        var lineNextStep1 = acceleratorModule.computeNextStep(l.getLine().getPoint1().getX(), l.vx, -9.8 * 80, 10 / 1000.);
-        var lineNextStep2 = acceleratorModule.computeNextStep(l.getLine().getPoint2().getX(), l.vx, -9.8 * 80, 10 / 1000.);
+        // var lineNextStep1 = acceleratorModule.computeNextStep(l.getLine().getPoint1().getX(), l.vx, -9.8 * 80, 10 / 1000.);
+        // var lineNextStep2 = acceleratorModule.computeNextStep(l.getLine().getPoint2().getX(), l.vx, -9.8 * 80, 10 / 1000.);
+        var lineNextStep1 = acceleratorModule.computeNextStep(l.getLine().getPoint1().getX(), l.vx, -9.8 / 40000 , 1000. / GameConfig.FPS);
+        var lineNextStep2 = acceleratorModule.computeNextStep(l.getLine().getPoint2().getX(), l.vx, -9.8 / 40000 , 1000. / GameConfig.FPS);
         l.getLine().getPoint1().setX(lineNextStep1.newPos);
         l.getLine().getPoint2().setX(lineNextStep2.newPos);
         l.vx = lineNextStep1.newVel;
@@ -97,7 +100,7 @@ function testIntersection() {
 
 exports.start = function(keyboardCallback) {
     isLaunched = true;
-    setInterval(update, 16);
+    setInterval(update, 1000 / GameConfig.FPS);
 }
 
 exports.play = function() {

@@ -1,0 +1,1 @@
+exports.FPS = 40;

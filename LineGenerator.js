@@ -17,7 +17,7 @@ exports.generate = function(lineList) {
 
     // If there are no lines, add one
     if (lineList.length == 0) {
-        var newLine = new solidLineModule.SolidLine(1000, 40000, 16000, 40000, -15000);
+        var newLine = new solidLineModule.SolidLine(1000, 40000, 16000, 40000, -15);
         lineList.push(newLine);
         exports.generate(lineList);
     }
@@ -84,7 +84,7 @@ function generateDistance(generatedDiffPosition, v) {
     var maxDistance = 30000;
 
     // Adapt linearly according speed
-    var factor = v / 40000;
+    var factor = v / 30;
     minDistance *= factor;
     maxDistance *= factor;
 
@@ -102,7 +102,7 @@ function generatePosition(lastY, directionUp, v) {
     var maxDiffTop = 15000;
     var maxDiffBottom = 35000;
 
-    var factor = v / 30000;
+    var factor = v / 25;
     // Adapt the max height distance according the current speed
     maxDiffTop *= factor;
     if (maxDiffTop >= 20000) {
