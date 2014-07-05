@@ -1,3 +1,5 @@
+var GameConfig = require("./GameConfig.js")
+
 // Closure to display a player (capture the display interface i.e the networkCommunicationManager)
 exports.createDisplayerFunc = function(networkCommunicationManager) {
     var networkCommunicationManager = networkCommunicationManager;
@@ -7,7 +9,7 @@ exports.createDisplayerFunc = function(networkCommunicationManager) {
                                              adjust(solidLine.getLine().getPoint1().getY()),
                                              adjust(solidLine.getLine().getPoint2().getX()),
                                              adjust(solidLine.getLine().getPoint2().getY()),
-                                             5);
+                                             GameConfig.LINE_COLOR);
     }
 }
 
