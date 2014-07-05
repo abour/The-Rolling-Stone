@@ -94,7 +94,8 @@ function testIntersection() {
 
     // Test the collision between the player and ground
     if (Intersection.sphereLineIntersection(player.getSphere(), floor.getLine())) {
-        restart();
+        exports.pause();
+        networkCommunicationManager.selfStop();
     }
 }
 
@@ -119,7 +120,7 @@ exports.isLaunched = function() {
     return isLaunched;
 }
 
-restart = function() {
+exports.restart = function() {
     player = new playerModule.Player(10000, 40000, 3000, 0, 0);
     lineList = new Array();
 }
@@ -133,7 +134,7 @@ exports.keyPressed = function(key) {
             player.jumpKeyReleased();
         }
         if (key == 512) { // 'B' key player1. 'G' on keyboard
-            restart();
+            exports.restart();
         }
     }
 }

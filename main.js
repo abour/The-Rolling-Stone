@@ -8,7 +8,9 @@ networkCommunicationManager.start("The Rolling Stone", function (e) {
             console.log("Game State : running");
             if (game.isLaunched() == false) {
                 game.start();
+
             }
+            game.restart();
             game.play();
             break;
         case 'StopGame':
