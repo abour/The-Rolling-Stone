@@ -45,7 +45,9 @@ function display() {
         solidLineDisplayer(line);
     });
 
-    floorDisplayer(floor);
+    if (GameConfig.DISPLAY_BOTTOM_LINE == true) {
+        floorDisplayer(floor);
+    }
 
     // Refresh the screen
     networkCommunicationManager.refreshScreen();
